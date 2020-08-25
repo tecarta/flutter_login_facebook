@@ -174,10 +174,10 @@ public class SwiftFlutterLoginFacebookPlugin: NSObject, FlutterPlugin {
     private func getProfileImageUrl(result: @escaping FlutterResult, width: Int, height: Int) {
         Profile.loadCurrentProfile { profile, error in
             switch (profile, error) {
-            // case let (profile?, nil):
-            //     let url = profile.imageURL(forMode: Profile.PictureMode.normal,
-            //                                size: CGSize(width: width, height: height))
-            //     result(url?.absoluteString)
+            case let (profile?, nil):
+                let url = profile.imageURL(forMode: Profile.PictureMode.normal,
+                                           size: CGSize(width: width, height: height))
+                result(url?.absoluteString)
             case let (nil, error?):
                 result(FlutterError(code: "FAILED",
                                     message: "Can't get profile: \(error)",
